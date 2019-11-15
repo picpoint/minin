@@ -1,5 +1,6 @@
 const {Router} = require('express');
 const rout = Router();
+const Course = require('../models/courseModel');
 
 
 rout.get('/', (req, res) => {
@@ -9,8 +10,10 @@ rout.get('/', (req, res) => {
   });
 });
 
-rout.post('/', (req, res) => {
-  console.log(req.body);
+rout.post('/', async (req, res) => {  
+  let course = new Course(req.body.title, req.body.price, req.body.img);
+  await course.save();
+  res.redirect('/courses');
 });
 
 module.exports = rout;

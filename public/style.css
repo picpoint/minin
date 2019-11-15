@@ -1,3 +1,7 @@
 .nav-wrapper {
   padding: 0 15px;
 }
+
+.price {
+  font-size: 2rem;
+}
