@@ -19,10 +19,10 @@ class Course {
     };
   }
 
-  static async update(course) {
+  static async update(course) {    
     const courses = await Course.getAll();
     const idx = courses.findIndex(c => c.id === course.id);
-    courses[idx] = course
+    courses[idx] = course;
 
     return new Promise((resolve, reject) => {
       fs.writeFile(
@@ -37,7 +37,7 @@ class Course {
         }
       );      
     });    
-
+    
   }
 
 
@@ -58,6 +58,7 @@ class Course {
         }
       );      
     });    
+
   }
 
   static getAll() {
