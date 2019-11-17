@@ -12,6 +12,7 @@ const routIndex = require('./routs/home');
 const routAdd = require('./routs/add');
 const routCourses = require('./routs/courses');
 
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended: true}));
 app.engine('hbs', hbs.engine);
