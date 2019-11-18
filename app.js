@@ -11,6 +11,7 @@ const hbs = exphbs.create({
 const routIndex = require('./routs/home');
 const routAdd = require('./routs/add');
 const routCourses = require('./routs/courses');
+const routCard = require('./routs/card');
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -21,6 +22,7 @@ app.set('views', 'views');
 //app.use(bodyParser);
 
 
+app.use('/card', routCard);
 app.use('/courses', routCourses);
 app.use('/add', routAdd);
 app.use('/', routIndex);
