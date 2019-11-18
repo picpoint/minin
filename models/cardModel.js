@@ -9,6 +9,7 @@ const p = path.join(
 
 
 class Card {
+  
   static async add(course) {
     const card = await Card.fetch();
     const idx = card.courses.findIndex(c => c.id === course.id);

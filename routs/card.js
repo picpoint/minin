@@ -9,9 +9,14 @@ rout.post('/add', async (req, res) => {
   res.redirect('/card');
 });
 
+rout.delete('/remove/:id', async (req, res) => {
+  const card = await Card.remove(req.params.id);
+  res.status(200).json(card);
+});
+
 rout.get('/', async (req, res) => {
   const card = await Card.fetch();
-  res.render('/card', {
+  res.render('card', {
     title: 'Корзина',
     isCard: true,
     courses: card.courses,
