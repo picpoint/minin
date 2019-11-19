@@ -11,9 +11,21 @@ rout.get('/', (req, res) => {
 });
 
 rout.post('/', async (req, res) => {  
-  let course = new Course(req.body.title, req.body.price, req.body.img);
-  await course.save();
-  res.redirect('/courses');
+  //let course = new Course(req.body.title, req.body.price, req.body.img);
+ 
+  const course = new Course({
+    title: req.body.title,
+    price: req.body.price,
+    img: req.body.img
+  });
+
+  try {
+    await course.save();  
+    res.redirect('/courses');
+  } catch (err) {
+    console.log(`***ERR TO SAVE IN BD ${err.message}***`);
+  }
+  
 });
 
 module.exports = rout;

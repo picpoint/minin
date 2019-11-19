@@ -13,7 +13,7 @@ const routIndex = require('./routs/home');
 const routAdd = require('./routs/add');
 const routCourses = require('./routs/courses');
 const routCard = require('./routs/card');
-const urlMongoDB = 'mongodb+srv://rmtar:rmtar@cluster0-nw44p.mongodb.net/zadvorniydb?retryWrites=true&w=majority';
+const urlMongoDB = 'mongodb+srv://rmtar:rmtar@cluster0-nw44p.mongodb.net/shop?retryWrites=true&w=majority';
 
 
 
@@ -31,9 +31,20 @@ app.use('/add', routAdd);
 app.use('/', routIndex);
 
 
+async function start() {
+  try {
+    await mongoose.connect(urlMongoDB, 
+      { useNewUrlParser: true,
+        useFindAndModify: false
+      });  
+    app.listen(port, () => {
+      console.log(`---server starting on port ${port}---`);
+    });     
+  } catch (err) {
+    console.log(`***ERR ${err.message}***`);
+  }
 
+}
 
+start();
 
-app.listen(port, () => {
-  console.log(`---server starting on port ${port}---`);
-});
