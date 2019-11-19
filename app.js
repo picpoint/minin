@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const exphbs = require('express-handlebars');
+const mongoose = require('mongoose');
 const port = process.env.port || 4000;
 const hbs = exphbs.create({
   defaultLayout: 'main',
@@ -12,6 +13,8 @@ const routIndex = require('./routs/home');
 const routAdd = require('./routs/add');
 const routCourses = require('./routs/courses');
 const routCard = require('./routs/card');
+const urlMongoDB = 'mongodb+srv://rmtar:rmtar@cluster0-nw44p.mongodb.net/zadvorniydb?retryWrites=true&w=majority';
+
 
 
 app.use(express.static(path.join(__dirname, 'public')));
